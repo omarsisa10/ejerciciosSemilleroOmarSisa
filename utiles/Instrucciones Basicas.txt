@@ -3,3 +3,4 @@
 - Abrir consola de comandos y ejecutar: 
 git clone https://github.com/ccastano/semilleroHBT.git
 - localizarse en la carpeta clonada "semilleroHBT"
+-subir proyecto a cuenta en gitHub
