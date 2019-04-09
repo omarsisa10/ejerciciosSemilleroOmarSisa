@@ -10,7 +10,7 @@ export class CreacionPersonasComponent implements OnInit {
   public header: string = 'Crear personas';
   public formHidden: boolean = false;
   public persona: personaDTO;
-
+  public editar2: boolean= false;
   fecha= Date.now();
 
 
@@ -28,6 +28,9 @@ export class CreacionPersonasComponent implements OnInit {
       mayorEdad: true,
       sexo: 'Masculino'
     };
+  }
+  public editar(){
+    this.editar2=false;
   }
 
 }
