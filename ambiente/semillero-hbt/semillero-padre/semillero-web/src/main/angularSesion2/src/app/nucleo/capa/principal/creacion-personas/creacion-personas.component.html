@@ -52,6 +52,7 @@
             <label for="edad">Edad</label>
             <input id="fechaNacimiento" class="form-control" type="text" placeholder="Fecha de nacimiento"
                 [(ngModel)]="persona.fechaNacimiento" name="fechaNacimiento" />
+
         </div>
     </div>
   <div class="form-row">
@@ -62,8 +63,8 @@
       </div>
       <div class="form-group col-md-6">
         <label>Fecha de nacimiento:</label> <br>
-        <input type="date"  data-date=""  data-date-format="DD-MM-YY"  [(ngModel)]="persona.fechaNacimiento" name="fecha">
-
+  <!--   <input type="date"  data-date=""  data-date-format="DD-MM-YY"  [(ngModel)]="persona.fechaNacimiento" name="fecha">
+--> <!-- pipe fecha actual  -->   <input type="text" name="fecha" value="{{fecha|date:'dd/mm/yy'}}" placeholder="dd/mm/yy" >
       </div>
   </div>
 

@@ -30,14 +30,8 @@
 
     <table border="1">
     <tr>
-      <td><strong>nombres</strong></td>
-      <td><strong>apellidos</strong></td>
-      <td><strong>no identificación</strong></td>
-      <td><strong>tipo identificación</strong></td>
-      <td><strong>número telefono</strong></td>
-      <td><strong>edad</strong></td>
-      <td><strong>estado</strong></td>
-      <td><strong>acción</strong></td>
+
+      <td *ngFor="let columna of columnas"><strong>{{columna|lowercase}}</strong></td>
     </tr>
 
     <tr>

@@ -61,7 +61,8 @@
       </div>
       <div class="form-group col-md-6">
         <label>Fecha de nacimiento:</label> <br>
-        <input type="date"  data-date=""  data-date-format="DD-MM-YY" name="fecha">
+        <!--   <input type="date"  data-date=""  data-date-format="DD-MM-YY"  [(ngModel)]="persona.fechaNacimiento" name="fecha">
+      --> <!-- pipe fecha actual  -->   <input type="text" name="fecha" value="{{fecha|date:'dd/mm/yy'}}" placeholder="dd/mm/yy" >
 
       </div>
   </div>

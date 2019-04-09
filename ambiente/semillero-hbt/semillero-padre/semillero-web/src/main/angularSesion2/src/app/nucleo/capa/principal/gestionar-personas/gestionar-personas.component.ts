@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GestionarPersonasComponent implements OnInit {
   public header: string = 'Gestionar personas';
-
+  public columnas: string[]= ["nombres","apellidos", "no identificación","tipo identificación","número telefono","edad","estado","acción"];
   constructor() { }
 
   ngOnInit() {

@@ -11,7 +11,7 @@ export class CreacionPersonasComponent implements OnInit {
   public formHidden: boolean = false;
   public persona: personaDTO;
 
-
+  fecha= Date.now();
 
 
   constructor() { }

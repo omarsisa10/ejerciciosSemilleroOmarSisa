@@ -3,14 +3,14 @@ import { personaDTO } from '../apoyo/modelo/personaDTO';
 
 @Component({
   selector: 'app-editar-personas',
-  templateUrl: './editar-personas.component.html',
-  styleUrls: ['./editar-personas.component.css']
+  templateUrl: './editar-personas.component.html'
 })
 export class EditarPersonasComponent implements OnInit {
   public header: string = 'Editar personas';
   public formHidden: boolean = false;
   public persona: personaDTO;
-
+  fecha= Date.now();
+  
   constructor() { }
 
   ngOnInit() {
