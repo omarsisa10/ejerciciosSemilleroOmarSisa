@@ -7,14 +7,13 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 </head>
 <div class="wrapper">
-
     <div class="form-row">
         <div class="form-group col-md-6">
 
             <label for="tidentificacion">Tipo de identificación</label>
             <br>
             <select class="form-control" [(ngModel)]="persona.tipoIdentificacion" name="tipoIdentificacion"
-                ng-init="options[1].value" ng-disabled="true">
+                ng-init="options[1].value" disabled='true'>
                 <option value="Tarjeta de identidad">Tarjeta de identidad</option>
                 <option value="Cedula de ciudadania">Cedula de ciudadania</option>
                 <option value="pasaporte">pasaporte</option>
@@ -62,7 +61,7 @@
       </div>
       <div class="form-group col-md-6">
         <label>Fecha de nacimiento:</label> <br>
-        <input type="date"  data-date=""  data-date-format="DD-MM-YY"  [(ngModel)]="persona.fechaNacimiento" name="fecha">
+        <input type="date"  data-date=""  data-date-format="DD-MM-YY" name="fecha">
 
       </div>
   </div>

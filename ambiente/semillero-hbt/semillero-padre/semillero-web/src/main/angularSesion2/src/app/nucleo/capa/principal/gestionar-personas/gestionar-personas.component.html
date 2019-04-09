@@ -1,0 +1,57 @@
+<h2>{{header}}</h2>
+<!-- <p>{{ nombre | uppercase }}</p>
+<p>{{ apellidos | uppercase }}</p>
+<p>{{ tipoIdentificacion | uppercase }}</p> -->
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<div class="wrapper">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+
+            <label for="tidentificacion">Tipo de identificación</label>
+            <br>
+            <select class="form-control"  name="tipoIdentificacion"
+                ng-init="options[1].value">
+                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
+                <option value="Cedula de ciudadania">Cedula de ciudadania</option>
+                <option value="pasaporte">pasaporte</option>
+            </select>
+
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nidentificacion">Número de identificación</label>
+            <input id="nidentificacion" class="form-control" type="text" placeholder="Numero de identificación"
+               name="numeroIdentificacion" />
+        </div>
+    </div>
+
+    <table border="1">
+    <tr>
+      <td><strong>nombres</strong></td>
+      <td><strong>apellidos</strong></td>
+      <td><strong>no identificación</strong></td>
+      <td><strong>tipo identificación</strong></td>
+      <td><strong>número telefono</strong></td>
+      <td><strong>edad</strong></td>
+      <td><strong>estado</strong></td>
+      <td><strong>acción</strong></td>
+    </tr>
+
+    <tr>
+      <td>omar </td>
+      <td>sisa </td>
+      <td>1052405210 </td>
+      <td>cc </td>
+      <td>3202559317 </td>
+      <td>23 </td>
+      <td>1 </td>
+      <td><input type="button" value="editar"><input type="button" value="borrar"><input type="button" value="consultar">
+ </td>
+    </tr>
+
+
+    </table>
+</div>
