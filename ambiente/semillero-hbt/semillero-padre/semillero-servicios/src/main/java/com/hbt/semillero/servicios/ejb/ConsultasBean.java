@@ -1,6 +1,8 @@
 package com.hbt.semillero.servicios.ejb;
 
 
+
+import java.util.Calendar;
 import java.util.List;
 
 import javax.ejb.Stateless;
@@ -9,33 +11,65 @@ import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
+import com.hbt.semillero.dto.PersonaDTO;
+import com.hbt.semillero.entidades.Comprador;
 import com.hbt.semillero.entidades.Linea;
 import com.hbt.semillero.entidades.Marca;
+import com.hbt.semillero.entidades.Persona;
+import com.hbt.semillero.entidades.Vendedor;
+import com.hbt.semillero.servicios.interfaces.IConsultasBeanLocal;
+
+/**
+ * consultas que arroja el servicio
+ * @author Sisa
+ *
+ */
+
 @Stateless
-public class ConsultasBean {
+public class ConsultasBean implements IConsultasBeanLocal {
 	
 	@PersistenceContext
 	private EntityManager entityManager;
 	
-	//consultas no necesitan una transaccionActiva
-	//(never) no se ejecuta el metodo con transaccion activa
-	//(TransactionAtributeType.required)  utiliza la que exista.	
-	//(TransactionAtributeType.)
-	@TransactionAttribute(TransactionAttributeType.NOT_SUPPORTED)
-	public void consultar() {
-		//jpa
-		 entityManager.createQuery("select ma from marca ma").getResultList();
-		//consulta nativa
-		//ejecuta el constructor
-		entityManager.createNativeQuery("select * from marca ma").getResultList();	
-	
+	/**
+	 * consulta para consultar todas las marcas
+	 */
+	public List<Marca> consultarMarcas() {
+		return entityManager.createQuery("select ma FROM Marca ma").getResultList();
 	}
-	public List<Marca> consultaMarcas(){
-		return entityManager.createNativeQuery("select * from marca ma").getResultList();	
+	/**
+	 * consulta para consultar todas las lineas
+	 */
+	public List<Linea> consultarLineas(Long idMarca){
+		return entityManager.createQuery("Select ln from Linea ln JOIN FETCH ln.marca where ln.marca.idMarca=:idMarca").setParameter("idMarca", idMarca).getResultList();
 	}
-	// ingresar marcas y lineas
-	public List<Linea> consultaLineas(Long idMarca ){
-		return entityManager.createQuery("select in from linea ln where ln.marca.idLinea =:ID_LINEA").setParameter("ID_LINEA", idMarca).getResultList();	
+	/**
+	 * guarda persona y si es comprador guarda comprador, igual para vendedor
+	 */
+	@TransactionAttribute(TransactionAttributeType.REQUIRES_NEW)
+	public void crearPersona(PersonaDTO personaDTO) {
+		Persona persona = new Persona();
+		persona.setNombres(personaDTO.getNombres());
+		persona.setApellidos(personaDTO.getApellidos());
+		persona.setNumeroIdentificacion(personaDTO.getNumeroIdentificacion());
+		persona.setTipoIdentificacion(personaDTO.getTipoIdentificacion());
+		persona.setNumeroTelefonico(personaDTO.getNumeroTelefonico());
+		persona.setEdad(personaDTO.getEdad());
+		
+		entityManager.persist(persona);
+		
+		if (personaDTO.isComprador()) {
+			Comprador comprador = new Comprador();
+			comprador.setFechaAfiliacion(Calendar.getInstance());
+			comprador.setPersona(persona);
+			entityManager.persist(comprador);
+		}
+		
+		if (personaDTO.isVendedor()) {
+			Vendedor vendedor = new Vendedor();
+			vendedor.setFechaIngreso(Calendar.getInstance());
+			vendedor.setPersona(persona);
+			entityManager.persist(vendedor);
+		}
 	}
-	
 }
