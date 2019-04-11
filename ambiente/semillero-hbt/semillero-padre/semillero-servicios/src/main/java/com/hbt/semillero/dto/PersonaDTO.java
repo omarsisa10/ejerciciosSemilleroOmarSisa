@@ -14,11 +14,11 @@ import javax.persistence.Table;
  */
 public class PersonaDTO implements Serializable {
 
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
-
+	/**
+	 * variables de la persona 
+	 */
 	private Long idPersona;
 
 	private String numeroIdentificacion;
@@ -36,7 +36,7 @@ public class PersonaDTO implements Serializable {
 	private boolean vendedor;
 	
 	private boolean comprador;
-
+	//********* GETTERSS Y SETTERS **************
 	public boolean isVendedor() {
 		return vendedor;
 	}

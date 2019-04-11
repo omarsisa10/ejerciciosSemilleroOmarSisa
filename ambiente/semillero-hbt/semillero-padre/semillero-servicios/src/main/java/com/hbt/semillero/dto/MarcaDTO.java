@@ -8,9 +8,13 @@ public class MarcaDTO implements Serializable {
 	 *  DTO de la marca de un vehiculo
 	 */
 	private static final long serialVersionUID = 1L;
-	
+	/**
+	 * variables de la marca
+	 */
 	private Long idMarca;
 	private String nombre;
+	
+	//********* GETTERSS Y SETTERS **************
 	public Long getIdMarca() {
 		
 		return idMarca;

@@ -20,25 +20,27 @@ import com.hbt.semillero.entidades.Vendedor;
 import com.hbt.semillero.servicios.interfaces.IConsultasBeanLocal;
 
 /**
- * consultas que arroja el servicio
+ * consultas que arroja el servicio 
  * @author Sisa
  *
  */
 
 @Stateless
 public class ConsultasBean implements IConsultasBeanLocal {
-	
+	/**
+	 * atributo entitymanager para manejar la session 
+	 */
 	@PersistenceContext
 	private EntityManager entityManager;
 	
 	/**
-	 * consulta para consultar todas las marcas
+	 * consulta para conocer todas las marcas
 	 */
 	public List<Marca> consultarMarcas() {
 		return entityManager.createQuery("select ma FROM Marca ma").getResultList();
 	}
 	/**
-	 * consulta para consultar todas las lineas
+	 * consulta para conocer todas las lineas
 	 */
 	public List<Linea> consultarLineas(Long idMarca){
 		return entityManager.createQuery("Select ln from Linea ln JOIN FETCH ln.marca where ln.marca.idMarca=:idMarca").setParameter("idMarca", idMarca).getResultList();
@@ -57,14 +59,14 @@ public class ConsultasBean implements IConsultasBeanLocal {
 		persona.setEdad(personaDTO.getEdad());
 		
 		entityManager.persist(persona);
-		
+		//si es comprador
 		if (personaDTO.isComprador()) {
 			Comprador comprador = new Comprador();
 			comprador.setFechaAfiliacion(Calendar.getInstance());
 			comprador.setPersona(persona);
 			entityManager.persist(comprador);
 		}
-		
+		//si es vendedor
 		if (personaDTO.isVendedor()) {
 			Vendedor vendedor = new Vendedor();
 			vendedor.setFechaIngreso(Calendar.getInstance());
@@ -72,4 +74,36 @@ public class ConsultasBean implements IConsultasBeanLocal {
 			entityManager.persist(vendedor);
 		}
 	}
+	/**
+	 * consulta para conocer todas las personas
+	 */
+	public List<Persona> consultarTodasLasPersonas() {
+		return entityManager.createQuery("Select pr from Persona pr").getResultList();
+	}
+	
+	/**
+	 * Consulta para conocer la persona con un  tipoIdentificacion y NumeroIdentificacion 
+	 * @param tipoIdentificacion   CC, TI
+	 * @param numeroIdentificacion 
+	 */
+	public List<Persona> consultarPersonas(String tipoIdentificacion, String numeroIdentificacion) {
+		return entityManager.createQuery("Select pr from Persona pr where pr.tipoIdentificacion=:tipoIdentificacion AND pr.numeroIdentificacion =: numeroIdentificacion")
+	.setParameter("tipoIdentificacion", tipoIdentificacion).setParameter("numeroIdentificacion", numeroIdentificacion).getResultList();
+	}
+	
+	/**
+	 * Servicio para editar los datos de una persona, ingresando la persona.
+	 * si no existe  el ID de la persona marca error
+	 */
+	public void editarPersona(PersonaDTO personaDTO) {
+		Persona persona = entityManager.find(Persona.class, personaDTO.getIdPersona());
+		persona.setNombres(personaDTO.getNombres());
+		persona.setApellidos(personaDTO.getApellidos());
+		persona.setNumeroIdentificacion(personaDTO.getNumeroIdentificacion());
+		persona.setTipoIdentificacion(personaDTO.getTipoIdentificacion());
+		persona.setNumeroTelefonico(personaDTO.getNumeroTelefonico());
+		persona.setEdad(personaDTO.getEdad());
+		entityManager.merge(persona);	
+	}
+	
 }

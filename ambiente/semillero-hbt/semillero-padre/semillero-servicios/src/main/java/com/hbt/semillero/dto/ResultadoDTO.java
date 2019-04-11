@@ -3,20 +3,25 @@ package com.hbt.semillero.dto;
 import java.io.Serializable;
 
 /**
- * dto del resultado 
+ * DTO del resultado  saber si tuvo exito o no
  * @author Sisa
  *
  */
 public class ResultadoDTO implements Serializable{
-
+/**
+ * para saber si la operacion realizada fue exitosa o no
+ */
 		private boolean exitoso;
-		
+		/**
+		 * para saber el mensaje que arrojo el error
+		 */	
 		private String mensajeError;
 
 		public boolean isExitoso() {
 			return exitoso;
 		}
 
+		//********* GETTERSS Y SETTERS **************
 		public void setExitoso(boolean exitoso) {
 			this.exitoso = exitoso;
 		}

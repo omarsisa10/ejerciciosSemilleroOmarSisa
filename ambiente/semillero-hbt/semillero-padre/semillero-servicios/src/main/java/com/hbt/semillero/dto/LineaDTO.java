@@ -10,7 +10,9 @@ import java.io.Serializable;
  *
  */
 public class LineaDTO implements Serializable{
-
+/**
+ * variables de la linea 
+ */
 	private Long idLinea;
 
 	private String nombre;
@@ -18,7 +20,7 @@ public class LineaDTO implements Serializable{
 	private int cilindraje;
 
 	private MarcaDTO marca;
-
+//********* GETTERSS Y SETTERS **************
 	public Long getIdLinea() {
 		return idLinea;
 	}
