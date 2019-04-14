@@ -8,6 +8,7 @@ import com.hbt.semillero.dto.PersonaDTO;
 import com.hbt.semillero.entidades.Linea;
 import com.hbt.semillero.entidades.Marca;
 import com.hbt.semillero.entidades.Persona;
+import com.hbt.semillero.entidades.Vehiculo;
 
 /**
  * Interface para implementar, marca los metodos necesarios.
@@ -26,4 +27,6 @@ public interface IConsultasBeanLocal {
 	public List<Persona> consultarTodasLasPersonas();
 	public List<Persona> consultarPersonas( String tipoIdentificacion,String numeroIdentififacion );
 	public void editarPersona(PersonaDTO personaDTO);
+	public List<Vehiculo> consultarVehiculos(long idMarca, long idLinea);
+	public List<Vehiculo> consultarTodosVehiculos();
 }

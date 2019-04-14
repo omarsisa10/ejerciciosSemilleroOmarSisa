@@ -16,6 +16,7 @@ import com.hbt.semillero.entidades.Comprador;
 import com.hbt.semillero.entidades.Linea;
 import com.hbt.semillero.entidades.Marca;
 import com.hbt.semillero.entidades.Persona;
+import com.hbt.semillero.entidades.Vehiculo;
 import com.hbt.semillero.entidades.Vendedor;
 import com.hbt.semillero.servicios.interfaces.IConsultasBeanLocal;
 
@@ -105,5 +106,17 @@ public class ConsultasBean implements IConsultasBeanLocal {
 		persona.setEdad(personaDTO.getEdad());
 		entityManager.merge(persona);	
 	}
+	// vehiculos servicios
+	/**
+	* Consulta todos los vehiculos en la bases de datos
+	 */
+	public List<Vehiculo> consultarTodosVehiculos() {
+		return entityManager.createQuery("Select ve from Vehiculo ve ").getResultList();
+	}
+	@Override
+	public List<Vehiculo> consultarVehiculos(long idMarca, long idLinea) {
+		return null;
+	}
+	
 	
 }

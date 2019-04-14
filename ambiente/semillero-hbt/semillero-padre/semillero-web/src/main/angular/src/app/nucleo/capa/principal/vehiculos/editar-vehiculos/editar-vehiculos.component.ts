@@ -5,7 +5,7 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './editar-vehiculos.component.html'
 })
 export class EditarVehiculosComponent implements OnInit {
-
+public header: string = 'Editar vehiculos';
   constructor() { }
 
   ngOnInit() {

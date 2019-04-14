@@ -1,1 +1,36 @@
-<p>editar vehiculo</p>
+<h2>{{ header }}</h2>
+<!-- <p>{{ nombre | uppercase }}</p>
+<p>{{ apellidos | uppercase }}</p>
+<p>{{ tipoIdentificacion | uppercase }}</p> -->
+
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<div class="wrapper">
+    <div class="form-row">
+
+        <div class="form-group col-md-6">
+            <label for="nidentificacion">Modelo</label>
+            <input id="modelo" class="form-control" type="text" placeholder="Modelo del vehiculo"
+               name="modelo" />
+        </div>
+        <div class="form-group col-md-6">
+            <label for="nidentificacion">Placa</label>
+            <input id="placa" class="form-control" type="text" placeholder="Placa del vehiculo"
+               name="placa" />
+        </div>
+
+        <div class="form-group col-md-6">
+            <label for="linea">Linea</label>
+            <br>
+            <select class="form-control"  name="tipoIdentificacion"
+                ng-init="options[1].value" >
+                <option value="1">Linea1</option>
+                <option value="2">Linea2</option>
+                <option value="3">Linea3</option>
+            </select>
+        </div>
+
+
+
+</div>

@@ -15,9 +15,11 @@ import com.hbt.semillero.dto.LineaDTO;
 import com.hbt.semillero.dto.MarcaDTO;
 import com.hbt.semillero.dto.PersonaDTO;
 import com.hbt.semillero.dto.ResultadoDTO;
+import com.hbt.semillero.dto.VehiculoDTO;
 import com.hbt.semillero.entidades.Linea;
 import com.hbt.semillero.entidades.Marca;
 import com.hbt.semillero.entidades.Persona;
+import com.hbt.semillero.entidades.Vehiculo;
 import com.hbt.semillero.servicios.interfaces.IConsultasBeanLocal;
 
 /**
@@ -164,5 +166,45 @@ public class ServiciosRest {
 		marcaDTO.setIdMarca(marca.getIdMarca());
 		marcaDTO.setNombre(marca.getNombre());
 		return marcaDTO;
+	}
+	
+	//vehiculos
+	/**
+	 * Consulta de vehiculos ingresando el idMarca yy el IdLinea
+	 */
+	@GET
+	@Path("/consultarVehiculos")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<VehiculoDTO> consultarVehiculos(@QueryParam(value = "idMarca")long idMarca, @QueryParam(value="idLinea") long idLinea) {
+		List<Vehiculo> vehiculos = consultasBean.consultarVehiculos(idMarca, idLinea);
+		List<VehiculoDTO> retorno = new ArrayList<VehiculoDTO>();
+		for (Vehiculo vehiculo : vehiculos) {
+			VehiculoDTO vehiculoDTO = new VehiculoDTO();
+			vehiculoDTO.setModelo(vehiculo.getModelo());
+			vehiculoDTO.setPlaca(vehiculo.getPlaca());
+		//	vehiculoDTO.setLinea(vehiculo.getLinea());
+			retorno.add(vehiculoDTO);
+		}
+		return retorno;
+	}
+	
+	
+	/**
+	 * Consulta todos los vehiculos
+	 */
+	@GET
+	@Path("/consultarTodosVehiculos")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<VehiculoDTO> consultarTodosVehiculos() {
+		List<Vehiculo> vehiculos = consultasBean.consultarTodosVehiculos();
+		List<VehiculoDTO> retorno = new ArrayList<VehiculoDTO>();
+		for (Vehiculo vehiculo : vehiculos) {
+			VehiculoDTO vehiculoDTO = new VehiculoDTO();
+			vehiculoDTO.setModelo(vehiculo.getModelo());
+			vehiculoDTO.setPlaca(vehiculo.getPlaca());
+			//vehiculoDTO.setLinea(LineaDTOvehiculo.getLinea());
+			retorno.add(vehiculoDTO);
+		}
+		return retorno;
 	}
 }

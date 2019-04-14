@@ -1,5 +1,6 @@
 package com.hbt.semillero.dto;
 
+
 import java.io.Serializable;
 
 public class MarcaDTO implements Serializable {
