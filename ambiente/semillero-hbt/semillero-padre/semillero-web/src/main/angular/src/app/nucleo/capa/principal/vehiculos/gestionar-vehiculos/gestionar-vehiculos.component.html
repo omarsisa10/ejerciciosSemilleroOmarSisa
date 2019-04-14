@@ -11,26 +11,28 @@
     <div class="form-row">
         <div class="form-group col-md-6">
 
-            <label for="tidentificacion">Tipo de identificación</label>
+            <label for="tidentificacion">Marca</label>
             <br>
-            <select class="form-control"  name="tipoIdentificacion"
+            <select class="form-control"  name="marca"
                 ng-init="options[1].value">
-                <option value="Tarjeta de identidad">Tarjeta de identidad</option>
-                <option value="Cedula de ciudadania">Cedula de ciudadania</option>
-                <option value="pasaporte">pasaporte</option>
+                <option value="Tarjeta de identidad">marca1</option>
+                <option value="Cedula de ciudadania">marca2</option>
             </select>
 
         </div>
         <div class="form-group col-md-6">
-            <label for="nidentificacion">Número de identificación</label>
-            <input id="nidentificacion" class="form-control" type="text" placeholder="Numero de identificación"
-               name="numeroIdentificacion" />
+            <label for="tidentificacion">Linea</label>
+            <br>
+            <select class="form-control"  name="marca"
+                ng-init="options[1].value">
+                <option value="Tarjeta de identidad">Linea1</option>
+                <option value="Cedula de ciudadania">Linea2</option>
+            </select>
         </div>
     </div>
 
     <table border="1">
     <tr>
-
       <td *ngFor="let columna of columnas"><strong>{{columna|lowercase}}</strong></td>
     </tr>
 
@@ -40,9 +42,7 @@
       <td>1052405210 </td>
       <td>cc </td>
       <td>3202559317 </td>
-      <td>23 </td>
-      <td>1 </td>
-      <td><input type="button" value="editar"><input type="button" value="borrar"><input type="button" value="consultar">
+      <td><input type="button" value="editar" routerLink="/editar-vehiculos"  ><input type="button" value="borrar"><input type="button" value="consultar">
  </td>
     </tr>
     </table>

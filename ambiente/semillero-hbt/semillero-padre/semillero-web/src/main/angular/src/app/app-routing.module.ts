@@ -4,6 +4,8 @@ import { CreacionPersonasComponent } from './nucleo/capa/principal/creacion-pers
 import { ApoyoComponent } from './nucleo/capa/principal/apoyo/apoyo.component';
 import { GestionarPersonasComponent } from './nucleo/capa/principal/gestionar-personas/gestionar-personas.component';
 import { EditarPersonasComponent } from './nucleo/capa/principal/editar-personas/editar-personas.component';
+import { GestionarVehiculosComponent } from './nucleo/capa/principal/vehiculos/gestionar-vehiculos/gestionar-vehiculos.component';
+import { EditarVehiculosComponent } from './nucleo/capa/principal/vehiculos/editar-vehiculos/editar-vehiculos.component';
 
 const routes: Routes = [
 	{
@@ -21,6 +23,14 @@ const routes: Routes = [
 	{
 		path: 'personas-editar',
 		component: EditarPersonasComponent
+	},
+	{
+		path: 'gestionar-vehiculos',
+		component: GestionarVehiculosComponent
+	},
+	{
+		path: 'editar-vehiculos',
+		component: EditarVehiculosComponent
 	}
 ];
 

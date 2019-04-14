@@ -10,12 +10,14 @@ import { ApoyoComponent } from './capa/principal/apoyo/apoyo.component';
 import { FormsModule } from '@angular/forms';
 import { GestionarPersonasComponent } from './capa/principal/gestionar-personas/gestionar-personas.component';
 import { EditarPersonasComponent } from './capa/principal/editar-personas/editar-personas.component';
+import { GestionarVehiculosComponent } from './capa/principal/vehiculos/gestionar-vehiculos/gestionar-vehiculos.component';
+import { EditarVehiculosComponent } from './capa/principal/vehiculos/editar-vehiculos/editar-vehiculos.component';
 
 
 //Nucleo representa al modulo que va a contener los componentes que van a orquestar la aplicacion 
 //Debe ser importado en el componente principal AppModule
 @NgModule({
-  declarations: [CapaComponent, EncabezadoComponent, PrincipalComponent, PiePaginaComponent, CreacionPersonasComponent, ApoyoComponent, GestionarPersonasComponent, EditarPersonasComponent],
+  declarations: [CapaComponent, EncabezadoComponent, PrincipalComponent, PiePaginaComponent, CreacionPersonasComponent, ApoyoComponent, GestionarPersonasComponent, EditarPersonasComponent, GestionarVehiculosComponent, EditarVehiculosComponent],
   imports: [
     CommonModule,RouterModule,FormsModule
   ],
